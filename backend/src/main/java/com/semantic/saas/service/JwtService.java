@@ -135,6 +135,17 @@ public class JwtService {
     }
 
     /**
+     * Validate JWT token with UserDetails
+     * @param token The JWT token
+     * @param userDetails The UserDetails implementation
+     * @return true if the token is valid, false otherwise
+     */
+    public Boolean validateToken(String token, org.springframework.security.core.userdetails.UserDetails userDetails) {
+        final String username = extractUsername(token);
+        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+    }
+
+    /**
      * Get signing key for JWT
      * @return The signing key
      */

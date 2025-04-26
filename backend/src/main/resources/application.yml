@@ -20,5 +20,5 @@ server:
   port: 8080
 
 jwt:
-  secret: ${JWT_SECRET:semantic_saas_jwt_secret_key_change_in_production}
+  secret: ${JWT_SECRET:c2VtYW50aWNzYWFzc2VjcmV0a2V5Y2hhbmdlaW5wcm9kdWN0aW9u}
   expiration: 86400000 # 24 hours in milliseconds
