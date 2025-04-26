@@ -1,0 +1,35 @@
+# Maven/Gradle
+target/
+build/
+.gradle/
+*.class
+*.jar
+*.war
+
+# Node
+node_modules/
+dist/
+build/
+npm-debug.log
+yarn-error.log
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+.classpath
+.project
+.settings/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
