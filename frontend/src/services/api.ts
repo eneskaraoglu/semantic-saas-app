@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { API_BASE_URL } from '../config';
 
-const API_URL = '/api';
+const API_URL = `${API_BASE_URL}/api`;
 
 // Create axios instance with default config
 const api = axios.create({
@@ -8,6 +9,7 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: true
 });
 
 // Add request interceptor to include auth token in requests

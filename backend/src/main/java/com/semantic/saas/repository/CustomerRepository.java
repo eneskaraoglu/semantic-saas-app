@@ -15,6 +15,8 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
      * @return an Optional containing the customer if found
      */
     Optional<Customer> findByName(String name);
+
+    Optional<Customer> findById(Integer id);
     
     /**
      * Check if a customer with the given name exists
