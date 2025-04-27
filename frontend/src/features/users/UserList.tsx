@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useUserStore } from './userStore';
 import { Link } from 'react-router-dom';
 import { User } from '../../services/userService';
@@ -7,6 +7,9 @@ const UserList: React.FC = () => {
   const { users, loading, error, fetchUsers, deleteUser } = useUserStore();
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filterRole, setFilterRole] = useState<string>('');
+  const [filterStatus, setFilterStatus] = useState<string>('');
 
   useEffect(() => {
     fetchUsers();

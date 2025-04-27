@@ -1,15 +1,38 @@
 import { Outlet } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 
 const AppLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
+  // Function to be passed to Sidebar component to track collapsed state
+  const handleSidebarCollapse = (collapsed: boolean) => {
+    setIsSidebarCollapsed(collapsed);
+  };
+
+  // Listen for window resize to handle sidebar state
+  useEffect(() => {
+    const handleResize = () => {
+      // Close sidebar on mobile when window is resized
+      if (window.innerWidth < 768 && sidebarOpen) {
+        setSidebarOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [sidebarOpen]);
 
   return (
     <div className="flex h-screen bg-gray-50 dark:bg-gray-900">
       {/* Sidebar */}
-      <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
+      <Sidebar 
+        isOpen={sidebarOpen} 
+        setIsOpen={setSidebarOpen} 
+        onCollapseChange={handleSidebarCollapse}
+      />
 
       {/* Main Content */}
       <div className="flex flex-col flex-1 overflow-hidden">
